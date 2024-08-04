@@ -142,13 +142,16 @@ const ShopPage = () => {
                 name="citizenshipImage"
                 render={({ field }) => (
                   <FormItem>
+                    <FormLabel className="text-lg font-medium text-gray-700">
+                      Citizenship Url
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Image URL"
                         {...field}
                         type="text"
                         disabled={isPending}
-                        className="w-full hidden border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+                        className="w-full  border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-sm mt-1" />

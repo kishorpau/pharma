@@ -10,10 +10,4 @@ export const ShopSchema = z.object({
   certificate: z.string().optional(),
   citizenshipImage: z.string().optional(),
   businessImage: z.string().optional(),
-  location: z.string().min(1, {
-    message: "Location is required",
-  }),
-  phoneNumber: z.string().min(10, {
-    message: "Phone number must be at least 10 digits",
-  }),
 });
