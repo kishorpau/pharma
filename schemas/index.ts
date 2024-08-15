@@ -10,4 +10,10 @@ export const ShopSchema = z.object({
   certificate: z.string().optional(),
   citizenshipImage: z.string().optional(),
   businessImage: z.string().optional(),
+  latitude: z.string().min(1, {
+    message: "Latitude is required",
+  }),
+  longitude: z.string().min(1, {
+    message: "Longitude is required",
+  }),
 });

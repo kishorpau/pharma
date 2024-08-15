@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     try {
       const { selectedUsers } = req.body;
 
-      // Ensure the shops table exists
+      // Ensure the shops table exists with latitude and longitude
       await sql`
         CREATE TABLE IF NOT EXISTS shops (
           id SERIAL PRIMARY KEY,
@@ -16,7 +16,9 @@ export default async function handler(req, res) {
           password TEXT,
           certificate TEXT,
           citizenshipImage TEXT,
-          businessImage TEXT
+          businessImage TEXT,
+          latitude TEXT,
+          longitude TEXT
         )
       `;
 
@@ -28,14 +30,16 @@ export default async function handler(req, res) {
         selectedUsers.map(
           (user) =>
             sql`
-            INSERT INTO shops (id, name, password, certificate, citizenshipImage, businessImage) 
-            VALUES (${user.id}, ${user.name}, ${user.password}, ${user.certificate}, ${user.citizenshipImage}, ${user.businessImage})
+            INSERT INTO shops (id, name, password, certificate, citizenshipImage, businessImage, latitude, longitude) 
+            VALUES (${user.id}, ${user.name}, ${user.password}, ${user.certificate}, ${user.citizenshipImage}, ${user.businessImage}, ${user.latitude}, ${user.longitude})
             ON CONFLICT (id) DO UPDATE
             SET name = EXCLUDED.name,
                 password = EXCLUDED.password,
                 certificate = EXCLUDED.certificate,
                 citizenshipImage = EXCLUDED.citizenshipImage,
-                businessImage = EXCLUDED.businessImage
+                businessImage = EXCLUDED.businessImage,
+                latitude = EXCLUDED.latitude,
+                longitude = EXCLUDED.longitude
           `
         )
       );

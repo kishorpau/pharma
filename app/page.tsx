@@ -1,9 +1,21 @@
-import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+"use client";
+import { SignInButton, SignUpButton, SignedIn, useAuth } from "@clerk/nextjs";
 import { Pill, BriefcaseMedical, HeartPulse } from "lucide-react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+  const { isSignedIn } = useAuth(); // Hook to check if the user is signed in
+
+  useEffect(() => {
+    if (isSignedIn) {
+      router.push("/home"); // Redirect to /home if the user is signed in
+    }
+  }, [isSignedIn, router]);
+
   return (
-    <div className=" h-[100vh] w-full flex flex-col items-center justify-center bg-gradient-to-r from-emerald-400 to-sky-500 text-white p-4">
+    <div className="h-[100vh] w-full flex flex-col items-center justify-center bg-gradient-to-r from-emerald-400 to-sky-500 text-white p-4">
       <header className="text-center mb-8">
         <h1 className="text-5xl font-bold mb-2">Pharmacy</h1>
         <p className="text-xl italic">"Your health, our priority."</p>

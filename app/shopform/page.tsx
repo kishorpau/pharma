@@ -31,6 +31,8 @@ const ShopPage = () => {
       certificate: "",
       citizenshipImage: "",
       businessImage: "",
+      latitude: "",
+      longitude: "",
     },
   });
 
@@ -121,6 +123,47 @@ const ShopPage = () => {
               />
               <FormField
                 control={form.control}
+                name="latitude"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-lg font-medium text-gray-700">
+                      Latitude
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="27.7172"
+                        {...field}
+                        disabled={isPending}
+                        className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-500 text-sm mt-1" />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="longitude"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-lg font-medium text-gray-700">
+                      Longitude
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="85.3240"
+                        {...field}
+                        disabled={isPending}
+                        className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-500 text-sm mt-1" />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
                 name="certificate"
                 render={({ field }) => (
                   <FormItem>
@@ -142,7 +185,7 @@ const ShopPage = () => {
                 name="citizenshipImage"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-lg font-medium text-gray-700">
+                    <FormLabel className="text-lg font-medium hidden text-gray-700">
                       Citizenship Url
                     </FormLabel>
                     <FormControl>
@@ -151,7 +194,7 @@ const ShopPage = () => {
                         {...field}
                         type="text"
                         disabled={isPending}
-                        className="w-full  border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+                        className="w-full  border-gray-300 hidden rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
                       />
                     </FormControl>
                     <FormMessage className="text-red-500 text-sm mt-1" />

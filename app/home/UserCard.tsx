@@ -2,19 +2,23 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user = {} }) => {
+  const { name = "Unknown", location = "No location provided", id } = user;
   const router = useRouter();
 
   const handleUserClick = () => {
-    router.push(`/users/${user.id}`);
+    if (id) {
+      router.push(`/users/${id}`);
+    }
   };
-  console.log(user.location);
+
+  console.log("Location:", location);
 
   return (
     <div className="w-full h-full rounded-lg overflow-hidden shadow-lg bg-white p-8">
       <div className="px-6 py-4">
-        <div className="font-bold text-2xl mb-4">{user.name}</div>
-        <p className="text-gray-700 text-lg mb-4">{user.location}</p>
+        <div className="font-bold text-2xl mb-4">{name}</div>
+
         <Image
           src="/images/pharmacy.jpg"
           alt="Pharmacy"

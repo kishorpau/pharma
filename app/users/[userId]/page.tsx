@@ -1,10 +1,8 @@
-// components/Navbar.tsx
 "use client";
 import { useEffect, useState } from "react";
 import { Home, Box, ShoppingCart, Heart, User, Loader } from "lucide-react";
 import ChatBox from "./ChatBox";
 
-// Main component
 const Navbar = ({ params }) => {
   const { userId } = params;
   const [user, setUser] = useState(null);
@@ -33,6 +31,9 @@ const Navbar = ({ params }) => {
       </div>
     );
   }
+
+  // Construct the Google Maps URL with place, zoom, and key parameters
+  const googleMapsUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&q=${user.latitude},${user.longitude}&zoom=19`;
 
   return (
     <>
@@ -82,7 +83,7 @@ const Navbar = ({ params }) => {
       </nav>
       <div className="fixed bottom-4 left-14 ">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d679.5690717133009!2d85.30722704718677!3d27.695908663631624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb18519ef0465d%3A0x9b7b09e4b5a7c6c7!2sPrakash%20Pharmacia%20Pvt.Ltd.!5e0!3m2!1sen!2snp!4v1722719050037!5m2!1sen!2snp"
+          src={googleMapsUrl}
           width="800"
           height="500"
           style={{ border: 0 }}

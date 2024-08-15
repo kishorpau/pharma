@@ -36,7 +36,7 @@ const HomePage = () => {
         </div>
         <div className="text-center mb-8">
           <h1 className="text-4xl font-extrabold text-gray-800 mb-2">
-            Welcome to Pharmacy
+            Welcome to Med-Easy
           </h1>
           <p className="text-lg text-gray-600">
             Your trusted partner for health and wellness.
